@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { config } from "./config";
 
 function Business_year() {
   const[businessyr,setBusinessyr] = useState([]);
@@ -11,7 +12,7 @@ function Business_year() {
 
   let yearlyData =async ()=>{
     try {
-      let yearFin = await axios.get("http://localhost:3002/get-business");
+      let yearFin = await axios.get(`${config.api}/get-business`);
       let result = yearFin.data;
       let res1 = result.reduce(function (prev, curr) {
         return {

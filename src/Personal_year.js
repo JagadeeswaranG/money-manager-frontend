@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { config } from "./config";
 
 function Personal_year() {
   const [personalyr, setPersonalyr] = useState([]);
@@ -11,7 +12,7 @@ function Personal_year() {
 
   let yearData = async () => {
     try {
-      let yearFin = await axios.get("http://localhost:3002/get-data");
+      let yearFin = await axios.get(`${config.api}/get-data`);
       let result = yearFin.data;
       let res1 = result.reduce(function (prev, curr) {
         return {

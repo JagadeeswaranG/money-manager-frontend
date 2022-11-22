@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { config } from "./config";
 
 function Personal() {
   const [user, setUser] = useState([]);
@@ -11,7 +12,7 @@ function Personal() {
 
   let personalData = async () => {
     try {
-      let personalFin = await axios.get("http://localhost:3002/get-data");
+      let personalFin = await axios.get(`${config.api}/get-data`);
       console.log(personalFin.data);
       setUser(personalFin.data);
     } catch (error) {

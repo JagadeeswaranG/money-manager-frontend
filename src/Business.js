@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
+import { config } from './config';
 
 function Business() {
   const[office,setOffice]= useState([]);
@@ -11,7 +12,7 @@ function Business() {
 
   let businessData =async ()=>{
     try {
-      let businessFin = await axios.get("http://localhost:3002/get-business")
+      let businessFin = await axios.get(`${config.api}/get-business`)
       setOffice(businessFin.data)
     } catch (error) {
       console.log(error);

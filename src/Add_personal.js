@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useFormik } from "formik";
 import axios from "axios";
+import { config } from "./config";
 
 function Add_personal() {
   const formik = useFormik({
@@ -40,7 +41,7 @@ function Add_personal() {
     onSubmit: async (values) => {
       try {
         const personalData1 = await axios.post(
-          "http://localhost:3002/create-data",
+          `${config.api}/create-data`,
           values
         );
         alert("Personal Data Added!");

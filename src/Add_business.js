@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useFormik } from "formik";
 import axios from "axios";
+import { config } from "./config";
 
 function Add_business() {
   const formik = useFormik({
@@ -40,7 +41,7 @@ function Add_business() {
     onSubmit: async (values) => {
       try {
         const personalData1 = await axios.post(
-          "http://localhost:3002/create-business",
+          `${config.api}/create-business`,
           values
         );
         alert("Business Data Added!");
