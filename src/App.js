@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import "./css/sb-admin-2.css";
+import "./css/fontawesome-free/css/all.min.css";
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Personal from "./Personal";
+import Business from "./Business";
+import Portal from "./Portal";
+import Personal_year from "./Personal_year";
+import Add_personal from "./Add_personal";
+import Add_business from "./Add_business";
+import Business_year from "./Business_year";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Portal />}></Route>
+        <Route path="/portal" element={<Portal />} >
+          <Route path="personal" element={<Personal/>}/>
+          <Route path="personal/add" element={<Add_personal/>}/>
+          <Route path="yearly" element={<Personal_year/>}/>
+          <Route path="business" element={<Business/>}/>
+          <Route path="business/add" element={<Add_business/>}/>
+          <Route path="year" element={<Business_year/>}/>
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
